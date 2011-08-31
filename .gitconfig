@@ -1,0 +1,40 @@
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[user]
+    name = Rodrigo Setti
+    email = rodrigosetti@gmail.com
+
+[gc]
+    auto = 1
+
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    df = diff
+    plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+[merge]
+    tool = opendiff
+[core]
+    excludesfile = OSX.gitignore
+
