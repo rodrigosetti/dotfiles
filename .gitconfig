@@ -38,3 +38,5 @@
 [core]
     excludesfile = OSX.gitignore
 
+[apply]
+	whitespace = nowarn
