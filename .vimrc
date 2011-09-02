@@ -204,7 +204,3 @@ nnoremap <leader><space> :noh<cr>
 " Removes all extra spaces from lines
 command -range StripRight silent! <line1>,<line2>s/\s\+$//
 
-" Auto commands
-autocmd BufWrite * retab
-autocmd BufWrite * %StripRight
-
