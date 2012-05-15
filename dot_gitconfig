@@ -15,8 +15,8 @@
   new = green bold
 
 [color "status"]
-  added = yellow
-  changed = green
+  added = green
+  changed = red
   untracked = cyan
 
 [user]
@@ -27,7 +27,7 @@
     auto = 1
 
 [alias]
-    st = status
+    st = !git branch && git status
     ci = commit
     co = checkout
     df = diff
@@ -39,4 +39,5 @@
     excludesfile = OSX.gitignore
 
 [apply]
-	whitespace = nowarn
+    whitespace = nowarn
+

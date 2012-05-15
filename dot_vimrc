@@ -1,45 +1,67 @@
+" Install pathogen
+call pathogen#infect()
 
-set nocompatible
 set modelines=2
+set nocompatible
 
 "-- Vim UI --
+set cursorline     " Highlight current editing line
 set laststatus=2 " always show the status line
 set list " we do what to show tabs, to ensure we get them out of my files
-set listchars=tab:»\ ,trail:· " show tabs and trailing
-set numberwidth=3 " We are good up to 99999 lines
+set listchars=tab:>\ ,trail:^ " show tabs and trailing
 set novisualbell " don't blink
+set numberwidth=3 " We are good up to 99999 lines
 set report=0 " tell us when anything is changed via :...
 set showmatch " show matching brackets
 set so=5      " minimal number of context lines
-set cursorline     " Highlight current editing line
-hi CursorLine cterm=NONE ctermbg=darkgray
-syntax on
+
+" color scheme
+syntax enable
+set background=dark
+colorscheme solarized
+
+" external formater program
+set formatprg=par
 
 if exists( '&colorcolumn' )
     hi ColorColumn ctermbg=black guibg=black
     set colorcolumn=80
 endif
 
-"-- Tweaks --
 "Add tweak for better backspace support
 set backspace=indent,eol,start
 
-set textwidth=0
-
-set undolevels=1000
-set showmode
-set pastetoggle=<F11>
-set formatoptions=cnoqr
-set smartcase
-set ignorecase
-set laststatus=2
-set encoding=utf-8
-set scrolloff=5
 set autoindent
-set incsearch
-set hlsearch
 set complete=.,w,b,u,U,t,i,d
+set diffopt=filler,iwhite
+set encoding=utf-8
+set formatoptions=cnoqr
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
 set number
+set pastetoggle=<F11>
+set scrolloff=5
+set showmode
+set smartcase
+set splitright
+set textwidth=0
+set undolevels=1000
+
+" Turn on spell checking for particular filetypes
+set spelllang=en,pt
+autocmd BufNewFile,BufRead *.changelog setlocal spell
+autocmd BufNewFile,BufRead CHANGELOG setlocal spell
+autocmd BufNewFile,BufRead INSTALL setlocal spell
+autocmd BufNewFile,BufRead README setlocal spell
+autocmd BufNewFile,BufRead TODO setlocal spell
+autocmd FileType html setlocal spell
+autocmd FileType man setlocal spell
+autocmd FileType markdown setlocal spell
+autocmd FileType plaintex setlocal spell
+autocmd FileType tex setlocal spell
+autocmd FileType xhtml setlocal spell
 
 "-- Filename autocomplete --
 set wildmode=longest:list,full
@@ -59,13 +81,7 @@ set iskeyword+=_,$,@,%,# " none of these are word dividers
 set expandtab "Use spaces instead of tabs
 set shiftwidth=4
 set tabstop=4
-set softtabstop=5
-
-" Alternative using Tab/Shift-Tab (for gvim).
-:vnoremap <Tab> >gv
-:vnoremap <S-Tab> <gv
-:vnoremap > >gv
-:vnoremap < <gv
+set softtabstop=4
 
 filetype plugin indent on
 
@@ -112,23 +128,13 @@ if has("folding")
 endif
 
 if has("localmap")
-  nmap <unique> <silent> <Leader>a :w %<CR> :!aspell -c %<CR> :e! %<CR>
-  nmap <unique> <silent> <Leader>s :syn sync fromstart<CR>
-  nmap <unique> <silent> <S-A-h> :execute TabMoveRW()<CR>
-  nmap <unique> <silent> <S-A-l> :execute TabMoveFW()<CR>
-  nmap <unique> <silent> <S-h> :tabprev<CR>
-  nmap <unique> <silent> <S-l> :tabnext<CR>
-  nmap <unique> <silent> <A-t> :tabnew<CR>
-  nmap <unique> <silent> <A-w> :bd<CR>
-  nmap <unique> <silent> <A-S-w> :close<CR>
-  nmap <unique> <silent> <F5> :prev<CR>
-  nmap <unique> <silent> <F6> :next<CR>
-  nmap <unique> <silent> <F3> :nohl<CR>
-  nmap <unique> <silent> <Leader>t :CommandT<CR>
-  nmap <unique> <silent> <Leader>b :BufExplorer<CR>
-  nmap <unique> <silent> <unique> <Leader>be :BufExplorer<CR>
-
   nmap <unique> <silent> <C-p> :FufFile<CR>
+
+  " Use ctrl-s to save the file (update)
+  nnoremap <silent> <C-S>      :update<CR>
+  vnoremap <silent> <C-S> <C-C>:update<CR>
+  inoremap <silent> <C-S> <C-O>:update<CR>
+
 endif
 
 if has("wildignore")
@@ -202,5 +208,17 @@ nnoremap <leader><space> :noh<cr>
 :filetype plugin on
 
 " Removes all extra spaces from lines
-command -range StripRight silent! <line1>,<line2>s/\s\+$//
+function! StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+command StripRight silent! :call StripTrailingWhitespaces()
 
