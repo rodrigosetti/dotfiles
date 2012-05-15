@@ -3,6 +3,7 @@ call pathogen#infect()
 
 set modelines=2
 set nocompatible
+set hidden
 
 "-- Vim UI --
 set cursorline     " Highlight current editing line
