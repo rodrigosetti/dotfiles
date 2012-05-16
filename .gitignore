@@ -2,7 +2,7 @@
 dot_ssh
 dot_vim/.netrwhist
 dot_vim/backup/*~
-dot_vim/tmp/*~
+dot_vim/tmp/*.swp
 dot_ipython/history
 dot_ipython/profile_default/history.sqlite
 dot_ipython/db
