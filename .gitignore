@@ -9,4 +9,5 @@ dot_ipython/profile_default/history.sqlite
 dot_ipython/db
 dot_ipython/IPython_crash_report.txt
 config/fish/fish_history
+config/fish/fishd.*
 *.pyc
