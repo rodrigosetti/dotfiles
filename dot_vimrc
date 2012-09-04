@@ -1,6 +1,9 @@
 " Install pathogen
 call pathogen#infect()
 
+" Set encoding used by VIM
+set encoding=utf-8
+
 set modelines=2
 set nocompatible
 set hidden
@@ -9,7 +12,7 @@ set hidden
 set cursorline     " Highlight current editing line
 set laststatus=2 " always show the status line
 set list " we do what to show tabs, to ensure we get them out of my files
-set listchars=tab:⇢\ ,trail:⋅ " show tabs and trailing
+set listchars=tab:▸\ ,trail:·,precedes:«,extends:» " show tabs and trailing
 set novisualbell " don't blink
 set numberwidth=3 " We are good up to 99999 lines
 set report=0 " tell us when anything is changed via :...
@@ -17,16 +20,14 @@ set showmatch " show matching brackets
 set so=5      " minimal number of context lines
 
 " color scheme
+set t_Co=256
 syntax enable
 set background=dark
 colorscheme solarized
 
-" external formater program
-set formatprg=par
-
 if exists( '&colorcolumn' )
-    hi ColorColumn ctermbg=black guibg=black
     set colorcolumn=80
+    hi ColorColumn ctermbg=darkgrey
 endif
 
 "Add tweak for better backspace support
@@ -119,7 +120,7 @@ endif
 
 if has("linebreak")
   set linebreak
-  set sbr=▸\
+    set showbreak=↲\ 
   set showtabline=2
 endif
 
