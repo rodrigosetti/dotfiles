@@ -20,6 +20,17 @@ if [ -n "$PS1" ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 
+    # set correct TERM color
+    if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+        export TERM='xterm-256color'
+    else
+        if [ -n "$TMUX" ]; then
+            export TERM=screen-256color
+        else
+            export TERM='xterm-color'
+        fi
+    fi
+
     # set a fancy prompt (non-color, unless we know we "want" color)
     case "$TERM" in
         xterm-color) color_prompt=yes;;
