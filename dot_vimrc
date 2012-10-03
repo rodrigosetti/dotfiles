@@ -4,7 +4,7 @@ call pathogen#infect()
 " Set encoding used by VIM
 set encoding=utf-8
 
-set modelines=2
+set modelines=3
 set nocompatible
 set hidden
 
@@ -27,7 +27,7 @@ colorscheme solarized
 
 if exists( '&colorcolumn' )
     set colorcolumn=80
-    hi ColorColumn ctermbg=darkgrey
+    hi ColorColumn ctermbg=234
 endif
 
 "Add tweak for better backspace support
@@ -51,19 +51,8 @@ set splitright
 set textwidth=0
 set undolevels=1000
 
-" Turn on spell checking for particular filetypes
-set spelllang=en,pt
-autocmd BufNewFile,BufRead *.changelog setlocal spell
-autocmd BufNewFile,BufRead CHANGELOG setlocal spell
-autocmd BufNewFile,BufRead INSTALL setlocal spell
-autocmd BufNewFile,BufRead README setlocal spell
-autocmd BufNewFile,BufRead TODO setlocal spell
-autocmd FileType html setlocal spell
-autocmd FileType man setlocal spell
-autocmd FileType markdown setlocal spell
-autocmd FileType plaintex setlocal spell
-autocmd FileType tex setlocal spell
-autocmd FileType xhtml setlocal spell
+" Turn on spell checking
+set spell spelllang=en,pt
 
 "-- Filename autocomplete --
 set wildmode=longest:list,full
