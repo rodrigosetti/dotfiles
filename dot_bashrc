@@ -68,5 +68,5 @@ if [ -n "$PS1" ]; then
 fi
 
 if [ -f ~/.bashrc_local ]; then
-    . ~/.bashrc_local
+    source ~/.bashrc_local
 fi
