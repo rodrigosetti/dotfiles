@@ -1,7 +1,7 @@
 export LANGUAGE=en
 export LC_ALL=en_US.UTF-8
 export LC_ALL=$LANG
-export TZ="/usr/share/zoneinfo/America/Sao_Paulo"
+export TZ="/usr/share/zoneinfo/America/Los_Angeles"
 
 # If shell is interactive
 if [ -n "$PS1" ]; then
