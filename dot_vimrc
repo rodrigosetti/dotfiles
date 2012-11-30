@@ -74,6 +74,11 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 
+"-- Faster timeout for mappings (ESC key immediately exit modes)
+set ttimeout
+set ttimeoutlen=20
+set notimeout
+
 filetype plugin indent on
 
 if has("vertsplit")
