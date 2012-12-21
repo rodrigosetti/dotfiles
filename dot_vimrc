@@ -1,6 +1,3 @@
-" Install pathogen
-call pathogen#infect()
-
 " Set encoding used by VIM
 set encoding=utf-8
 
