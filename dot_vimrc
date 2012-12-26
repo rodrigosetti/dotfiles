@@ -1,8 +1,20 @@
-" Set encoding used by VIM
-set encoding=utf-8
+set encoding=utf-8  " Set encoding used by VIM
+set nocompatible    " Be Vi improved
+
+" Bundles installation
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" Original repos on github
+Bundle 'tpope/vim-surround'
+Bundle 'kien/ctrlp.vim'
+
+" Done
+filetype plugin indent on
 
 set modelines=3
-set nocompatible
 set hidden
 
 "-- Vim UI --

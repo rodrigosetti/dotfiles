@@ -10,4 +10,5 @@ dot_ipython/db
 dot_ipython/IPython_crash_report.txt
 config/fish/fish_history
 config/fish/fishd.*
+vim/bundle
 *.pyc

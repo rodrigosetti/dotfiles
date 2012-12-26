@@ -42,9 +42,13 @@ done
 # Creates .vim directory in home, if not exists
 [ ! -d "$HOME/.vim" ] && mkdir -v "$HOME/.vim"
 
-# Create backup and temporary directories in .vim (to be local)
+# Create backup, temporary and bundle directories in .vim (to be local)
 [ ! -d "$HOME/.vim/backup" ] && mkdir -v "$HOME/.vim/backup"
 [ ! -d "$HOME/.vim/tmp" ] && mkdir -v "$HOME/.vim/tmp"
+[ ! -d "$HOME/.vim/bundle" ] && mkdir -v "$HOME/.vim/bundle"
+
+# Clone vundle project into a new vim bundle
+git clone "https://github.com/gmarik/vundle.git" "$HOME/.vim/bundle/vundle"
 
 # For every file in installation vim directory
 for FILE_NAME in `ls vim`; do
