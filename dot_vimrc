@@ -9,7 +9,9 @@ Bundle 'gmarik/vundle'
 
 " Original repos on github
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-markdown'
 Bundle 'kien/ctrlp.vim'
+"Bundle 'myusuf3/numbers.vim'
 
 " Done
 filetype plugin indent on
@@ -18,8 +20,7 @@ set modelines=3
 set hidden
 
 "-- Vim UI --
-set cursorline     " Highlight current editing line
-set laststatus=2 " always show the status line
+set nocursorline     " Highlight current editing line
 set list " we do what to show tabs, to ensure we get them out of my files
 set listchars=tab:▸\ ,trail:·,precedes:«,extends:» " show tabs and trailing
 set novisualbell " don't blink
@@ -60,7 +61,8 @@ set textwidth=0
 set undolevels=1000
 
 " Turn on spell checking
-set spell spelllang=en,pt
+"set spell spelllang=en,pt
+set spell spelllang=en
 
 "-- Filename autocomplete --
 set wildmode=longest:list,full
@@ -94,6 +96,7 @@ if has("vertsplit")
 endif
 
 if has("statusline")
+  set laststatus=2 " always show the status line
   set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
   "              | | | | |  |   |      |  |     |    |
   "              | | | | |  |   |      |  |     |    + current
@@ -225,4 +228,12 @@ function! StripTrailingWhitespaces()
 endfunction
 
 command StripRight silent! :call StripTrailingWhitespaces()
+
+" Load directory specific configurations
+if filereadable(".vim.custom")
+    so .vim.custom
+endif
+
+" Thrift syntax highlighting
+au BufRead,BufNewFile *.thrift set filetype=thrift
 

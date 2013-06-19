@@ -36,8 +36,16 @@
 [merge]
     tool = opendiff
 [core]
-    excludesfile = OSX.gitignore
+	excludesfile = /Users/rsetti/.gitignore_global
 
 [apply]
     whitespace = nowarn
 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[diff]
+	algorithm = patience
