@@ -146,5 +146,3 @@ if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
