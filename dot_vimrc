@@ -1,20 +1,53 @@
 set encoding=utf-8  " Set encoding used by VIM
-set nocompatible    " Be Vi improved
+
+if has('vim_starting')
+    set nocompatible               " Be improved
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
 " Bundles installation
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+call neobundle#rc(expand('~/.vim/bundle/'))
 
+ " Let NeoBundle manage NeoBundle
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+ " Recommended to install
+ " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
+ NeoBundle 'Shougo/vimproc'
+
+" My Bundles here:
 " Original repos on github
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'kien/ctrlp.vim'
-"Bundle 'myusuf3/numbers.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Shougo/unite.vim'
 
-" Done
-filetype plugin indent on
+filetype plugin indent on " Required!
+NeoBundleCheck
+
+" Automatically displays all buffers when there's only one tab open.
+let g:airline#extensions#tabline#enabled = 1
+
+" Airline customization
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
 set modelines=3
 set hidden
@@ -95,24 +128,24 @@ if has("vertsplit")
   set cmdwinheight=10
 endif
 
-if has("statusline")
-  set laststatus=2 " always show the status line
-  set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
-  "              | | | | |  |   |      |  |     |    |
-  "              | | | | |  |   |      |  |     |    + current
-  "              | | | | |  |   |      |  |     |       column
-  "              | | | | |  |   |      |  |     +-- current line
-  "              | | | | |  |   |      |  +-- current % into file
-  "              | | | | |  |   |      +-- current syntax in
-  "              | | | | |  |   |          square brackets
-  "              | | | | |  |   +-- current fileformat
-  "              | | | | |  +-- number of lines
-  "              | | | | +-- preview flag in square brackets
-  "              | | | +-- help flag in square brackets
-  "              | | +-- readonly flag in square brackets
-  "              | +-- modified flag in square brackets
-  "              +-- full path to file in the buffer
-endif
+"if has("statusline")
+"  set laststatus=2 " always show the status line
+"  set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+"  "              | | | | |  |   |      |  |     |    |
+"  "              | | | | |  |   |      |  |     |    + current
+"  "              | | | | |  |   |      |  |     |       column
+"  "              | | | | |  |   |      |  |     +-- current line
+"  "              | | | | |  |   |      |  +-- current % into file
+"  "              | | | | |  |   |      +-- current syntax in
+"  "              | | | | |  |   |          square brackets
+"  "              | | | | |  |   +-- current fileformat
+"  "              | | | | |  +-- number of lines
+"  "              | | | | +-- preview flag in square brackets
+"  "              | | | +-- help flag in square brackets
+"  "              | | +-- readonly flag in square brackets
+"  "              | +-- modified flag in square brackets
+"  "              +-- full path to file in the buffer
+"endif
 
 if has("cmdline_info")
   set showcmd " show the command being typed
@@ -125,7 +158,7 @@ endif
 
 if has("linebreak")
   set linebreak
-    set showbreak=↲\ 
+    set showbreak=↲\
   set showtabline=2
 endif
 
@@ -135,7 +168,11 @@ if has("folding")
 endif
 
 if has("localmap")
-  nmap <unique> <silent> <C-p> :FufFile<CR>
+  " C-p to search files
+  nnoremap <C-p> :Unite file_rec/async<cr>
+
+  " Content searching
+  nnoremap <space>/ :Unite grep:.<cr>
 
   " Use ctrl-s to save the file (update)
   nnoremap <silent> <C-S>      :update<CR>
