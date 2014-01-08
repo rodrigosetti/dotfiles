@@ -4,6 +4,11 @@ export LC_ALL=$LANG
 export TZ="/usr/share/zoneinfo/America/Los_Angeles"
 export EDITOR=vim
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
 # Configure Colors:
 COLOR_WHITE='\033[1;37m'
 COLOR_LIGHTGRAY='033[0;37m'

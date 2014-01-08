@@ -48,7 +48,8 @@ done
 [ ! -d "$HOME/.vim/bundle" ] && mkdir -v "$HOME/.vim/bundle"
 
 # Clone vundle project into a new vim bundle
-git clone "https://github.com/gmarik/vundle.git" "$HOME/.vim/bundle/vundle"
+git clone "git@github.com:gmarik/vundle.git" "$HOME/.vim/bundle/vundle"
+git clone "git@github.com:Shougo/neobundle.vim.git" "$HOME/.vim/bundle/neobundle.vim"
 
 # For every file in installation vim directory
 for FILE_NAME in `ls vim`; do
