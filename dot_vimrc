@@ -17,12 +17,13 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 " My Bundles here:
 " Original repos on github
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim' "search and display information from various sources
+NeoBundle 'bling/vim-airline' "lean & mean status/tabline for vim that's light as air
+NeoBundle 'junegunn/vim-easy-align' ":EasyAlign command
+NeoBundle 'mustache/vim-mustache-handlebars' "Mustache syntax
+NeoBundle 'scrooloose/syntastic' "Syntax checking hacks for vim
+NeoBundle 'tpope/vim-markdown' "Markdown syntax highlighting
+NeoBundle 'tpope/vim-surround' "Surround commands
 
 filetype plugin indent on " Required!
 NeoBundleCheck
