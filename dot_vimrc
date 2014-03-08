@@ -24,6 +24,7 @@ NeoBundle 'mustache/vim-mustache-handlebars' "Mustache syntax
 NeoBundle 'scrooloose/syntastic' "Syntax checking hacks for vim
 NeoBundle 'tpope/vim-markdown' "Markdown syntax highlighting
 NeoBundle 'tpope/vim-surround' "Surround commands
+NeoBundle 'terryma/vim-multiple-cursors' "Multiple cursors (a-la Sublime)
 
 filetype plugin indent on " Required!
 NeoBundleCheck
