@@ -51,4 +51,7 @@
 [diff]
     algorithm = patience
 [push]
-	default = matching
+    default = matching
+[branch]
+    autosetuprebase = always
+
