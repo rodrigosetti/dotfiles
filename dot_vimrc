@@ -25,19 +25,24 @@ NeoBundle 'scrooloose/syntastic' "Syntax checking hacks for vim
 NeoBundle 'tpope/vim-markdown' "Markdown syntax highlighting
 NeoBundle 'tpope/vim-surround' "Surround commands
 NeoBundle 'terryma/vim-multiple-cursors' "Multiple cursors (a-la Sublime)
+NeoBundle 'embear/vim-localvimrc' " Local .lvimrc files
 
 filetype plugin indent on " Required!
 NeoBundleCheck
 
-" Automatically displays all buffers when there's only one tab open.
+" ##################################################################
+" Plugins Customizations
+" ##################################################################
+
+" Airline: Automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
 
-" Airline customization
+" Airline: customization
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-" unicode symbols
+" Airline: unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
@@ -50,6 +55,14 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+" Syntastic settings
+let g:syntastic_javascript_checkers = ['jshint'] 
+let g:syntastic_javascript_jsx_checkers = ['jsxhint'] 
+
+" ##################################################################
+" End Plugins Customizations
+" ##################################################################
 
 set modelines=3
 set hidden
@@ -123,8 +136,6 @@ set softtabstop=4
 set ttimeout
 set ttimeoutlen=20
 set notimeout
-
-filetype plugin indent on
 
 if has("vertsplit")
   set cmdwinheight=10
@@ -251,8 +262,6 @@ endif
 
 nnoremap <leader><space> :noh<cr>
 
-:filetype plugin on
-
 " Removes all extra spaces from lines
 function! StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
@@ -267,12 +276,4 @@ function! StripTrailingWhitespaces()
 endfunction
 
 command StripRight silent! :call StripTrailingWhitespaces()
-
-" Load directory specific configurations
-if filereadable(".vim.custom")
-    so .vim.custom
-endif
-
-" Thrift syntax highlighting
-au BufRead,BufNewFile *.thrift set filetype=thrift
 
