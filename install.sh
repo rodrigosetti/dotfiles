@@ -1,5 +1,16 @@
 #! /bin/sh
 
+if [ ! -f dot_vimrc ]; then
+    # Remote installation
+
+    echo "\033[0;34mCloning dotfiles...\033[0m"
+    hash git >/dev/null && /usr/bin/env git clone https://github.com/rodrigosetti/dotfiles.git $HOME/.dotfiles || {
+        echo "git not installed"
+        exit
+    }
+    cd $HOME/.dotfiles
+fi
+
 # For every dot_* file in installation
 for REP_FILE in `ls -d dot_*`; do
     DOT_FILE=`echo "$REP_FILE" | sed 's/^dot_/./'`
@@ -47,8 +58,7 @@ done
 [ ! -d "$HOME/.vim/tmp" ] && mkdir -v "$HOME/.vim/tmp"
 [ ! -d "$HOME/.vim/bundle" ] && mkdir -v "$HOME/.vim/bundle"
 
-# Clone vundle project into a new vim bundle
-git clone "git@github.com:gmarik/vundle.git" "$HOME/.vim/bundle/vundle"
+# Clone Neobundle project into a new vim bundle
 git clone "git@github.com:Shougo/neobundle.vim.git" "$HOME/.vim/bundle/neobundle.vim"
 
 # For every file in installation vim directory
@@ -67,4 +77,10 @@ for FILE_NAME in `ls vim`; do
         echo "File exists and is not a link, not writing: $HOME_FILEPATH" > /dev/stderr
     fi
 done
+
+###### Installs oh-my-zsh
+
+if [ ! -d $HOME/.oh-my-zsh ]; then
+    curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+fi
 
