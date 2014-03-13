@@ -26,6 +26,7 @@ NeoBundle 'tpope/vim-markdown' "Markdown syntax highlighting
 NeoBundle 'tpope/vim-surround' "Surround commands
 NeoBundle 'terryma/vim-multiple-cursors' "Multiple cursors (a-la Sublime)
 NeoBundle 'embear/vim-localvimrc' " Local .lvimrc files
+NeoBundle 'mhinz/vim-startify' " Custom start page
 
 filetype plugin indent on " Required!
 NeoBundleCheck
@@ -100,6 +101,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set number
+set relativenumber
 set pastetoggle=<F11>
 set scrolloff=5
 set showmode
