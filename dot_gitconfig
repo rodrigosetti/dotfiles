@@ -1,53 +1,43 @@
 [color]
   branch = auto
-  diff = auto
+  diff   = auto
   status = auto
 
 [color "branch"]
   current = yellow reverse
-  local = yellow
-  remote = green
+  local   = yellow
+  remote  = green
 
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
-  old = red bold
-  new = green bold
+  old  = red bold
+  new  = green bold
 
 [color "status"]
-  added = green
-  changed = red
+  added     = green
+  changed   = red
   untracked = cyan
 
 [user]
-    name = Rodrigo Setti
+    name  = Rodrigo Setti
     email = rodrigosetti@gmail.com
 
 [gc]
     auto = 1
 
 [alias]
-    st = !git branch && git status
-    ci = commit
-    co = checkout
-    df = diff
-    plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    grep = grep -n --color=always -E
+    status = !git branch && git status
+    plog   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    grep   = grep -n --color=always -E
+    last24 = log --author=rsetti --since=yesterday --pretty=oneline --abbrev-commit
 
 [merge]
     tool = opendiff
-[core]
-    excludesfile = /Users/rsetti/.gitignore_global
 
 [apply]
     whitespace = nowarn
 
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
 [diff]
     algorithm = patience
 [push]
