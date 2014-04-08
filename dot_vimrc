@@ -1,5 +1,7 @@
 set encoding=utf-8  " Set encoding used by VIM
 
+set shell=bash "Set Vim's shell
+
 if has('vim_starting')
     set nocompatible               " Be improved
     set runtimepath+=~/.vim/bundle/neobundle.vim/
