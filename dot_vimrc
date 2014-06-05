@@ -28,7 +28,6 @@ NeoBundle 'terryma/vim-multiple-cursors' "Multiple cursors (a-la Sublime)
 NeoBundle 'embear/vim-localvimrc' " Local .lvimrc files
 NeoBundle 'mhinz/vim-startify' " Custom start page
 NeoBundle 'editorconfig/editorconfig-vim' " .editorconfig support
-NeoBundle 'mxw/vim-jsx' " syntax and indentation for JSX (React)
 NeoBundle 'bling/vim-airline' "lean & mean status/tabline for vim that's light as air
 NeoBundle 'tpope/vim-repeat' "enable repeating supported plugin maps with .
 
@@ -117,7 +116,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set number
-set relativenumber
+set norelativenumber
 set pastetoggle=<F11>
 set scrolloff=5
 set showmode
