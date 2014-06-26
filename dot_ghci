@@ -1,0 +1,5 @@
+:set prompt "\ESC[34m%s > \ESC[m"
+
+:def hoogle \x -> return $ ":!hoogle --color --count=50 \"" ++ x ++ "\""
+:def doc \x -> return $ ":!hoogle --info \"" ++ x ++ "\""
+
