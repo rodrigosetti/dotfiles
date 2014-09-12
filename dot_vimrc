@@ -137,10 +137,8 @@ set wildmode=longest:list,full
 set wildignore=*.o,*.pyc
 set wildmenu
 
-"-- Backup --
-set backup " make backup files
-set backupdir=~/.vim/backup " where to put backup files
-set directory=~/.vim/tmp " directory to place swap files in
+"-- No Backup --
+set nobackup " make no backup files - I have git for it
 
 "-- Programming --
 set fileformats=unix,dos,mac " support all three, in this order

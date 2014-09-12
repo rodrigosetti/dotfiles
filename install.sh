@@ -48,35 +48,9 @@ for FILE_NAME in `ls config`; do
     fi
 done
 
-###### Special installation for .vim directory ######
+######  Installs Neobundle
 
-# Creates .vim directory in home, if not exists
-[ ! -d "$HOME/.vim" ] && mkdir -v "$HOME/.vim"
-
-# Create backup, temporary and bundle directories in .vim (to be local)
-[ ! -d "$HOME/.vim/backup" ] && mkdir -v "$HOME/.vim/backup"
-[ ! -d "$HOME/.vim/tmp" ] && mkdir -v "$HOME/.vim/tmp"
-[ ! -d "$HOME/.vim/bundle" ] && mkdir -v "$HOME/.vim/bundle"
-
-# Clone Neobundle project into a new vim bundle
 git clone "git@github.com:Shougo/neobundle.vim.git" "$HOME/.vim/bundle/neobundle.vim"
-
-# For every file in installation vim directory
-for FILE_NAME in `ls vim`; do
-    HOME_FILEPATH="$HOME/.vim/$FILE_NAME"
-
-    # If file in home directory is a link, then we remove it
-    if [ -L "$HOME_FILEPATH" ]; then
-        rm -v "$HOME_FILEPATH"
-    fi
-
-    # If file in home does not exists as file or directory, create the link
-    if [ ! -f "$HOME_FILEPATH" -a ! -d "$HOME_FILEPATH" ]; then
-        ln -vs "`pwd`/vim/$FILE_NAME" "$HOME_FILEPATH"
-    else
-        echo "File exists and is not a link, not writing: $HOME_FILEPATH" > /dev/stderr
-    fi
-done
 
 ###### Installs oh-my-zsh
 
