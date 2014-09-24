@@ -47,3 +47,5 @@
 
 [pull]
 	rebase = true
+[core]
+	excludesfile = ~/.gitignore
