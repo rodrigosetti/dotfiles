@@ -31,6 +31,7 @@ NeoBundle 'editorconfig/editorconfig-vim' " .editorconfig support
 NeoBundle 'bling/vim-airline' "lean & mean status/tabline for vim that's light as air
 NeoBundle 'tpope/vim-repeat' "enable repeating supported plugin maps with .
 NeoBundle 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
+NeoBundle 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
 
 filetype plugin indent on " Required!
 NeoBundleCheck
