@@ -8,7 +8,7 @@ if has('vim_starting')
 endif
 
 " Bundles installation
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -32,6 +32,9 @@ NeoBundle 'bling/vim-airline' "lean & mean status/tabline for vim that's light a
 NeoBundle 'tpope/vim-repeat' "enable repeating supported plugin maps with .
 NeoBundle 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
 NeoBundle 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
+NeoBundle 'bogado/file-line' "vim index.html:20
+
+call neobundle#end()
 
 filetype plugin indent on " Required!
 NeoBundleCheck
