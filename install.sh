@@ -50,7 +50,7 @@ done
 
 ######  Installs Neobundle
 
-git clone "git@github.com:Shougo/neobundle.vim.git" "$HOME/.vim/bundle/neobundle.vim"
+git clone "https://github.com/Shougo/neobundle.vim.git" "$HOME/.vim/bundle/neobundle.vim"
 
 ###### Installs oh-my-zsh
 
