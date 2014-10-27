@@ -9,6 +9,7 @@ if [ ! -f dot_vimrc ]; then
         exit
     }
     cd $HOME/.dotfiles
+    git submodule update
 fi
 
 # For every dot_* file in installation
@@ -47,10 +48,6 @@ for FILE_NAME in `ls config`; do
         echo "File exists and is not a link, not writing: $HOME_FILEPATH" > /dev/stderr
     fi
 done
-
-######  Installs Neobundle
-
-git clone "https://github.com/Shougo/neobundle.vim.git" "$HOME/.vim/bundle/neobundle.vim"
 
 ###### Installs oh-my-zsh
 
