@@ -32,6 +32,7 @@ NeoBundle 'tpope/vim-repeat' "enable repeating supported plugin maps with .
 NeoBundle 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
 NeoBundle 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
 NeoBundle 'bogado/file-line' "vim index.html:20
+NeoBundle 'airblade/vim-gitgutter' " A git gutter
 
 call neobundle#end()
 
@@ -41,6 +42,9 @@ NeoBundleCheck
 " ##################################################################
 " Plugins Customizations
 " ##################################################################
+
+" git gutter
+let g:gitgutter_sign_column_always = 1
 
 " Airline: customization
 if !exists('g:airline_symbols')
@@ -103,6 +107,9 @@ set so=5      " minimal number of context lines
 set t_Co=256
 syntax enable
 colorscheme sorcerer
+
+" I don't like the color of this column
+hi SignColumn ctermbg=0
 
 if exists( '&colorcolumn' )
     set colorcolumn=80
