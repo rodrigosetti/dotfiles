@@ -33,6 +33,7 @@ NeoBundle 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
 NeoBundle 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
 NeoBundle 'bogado/file-line' "vim index.html:20
 NeoBundle 'airblade/vim-gitgutter' " A git gutter
+NeoBundle 'ekalinin/Dockerfile.vim' "Dockerfile syntax
 
 call neobundle#end()
 
