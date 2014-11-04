@@ -109,9 +109,6 @@ set t_Co=256
 syntax enable
 colorscheme sorcerer
 
-" I don't like the color of this column
-hi SignColumn ctermbg=0
-
 if exists( '&colorcolumn' )
     set colorcolumn=80
     hi ColorColumn ctermbg=234

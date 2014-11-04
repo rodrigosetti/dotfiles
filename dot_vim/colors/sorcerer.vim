@@ -126,7 +126,7 @@ hi PmenuSbar              cterm=NONE             ctermbg=250   ctermfg=fg
 hi PmenuSel               cterm=NONE             ctermbg=149   ctermfg=16
 hi Question               cterm=bold             ctermbg=bg    ctermfg=46
 hi Search                 cterm=bold             ctermbg=185   ctermfg=16
-hi SignColumn             cterm=NONE             ctermbg=187   ctermfg=231
+hi SignColumn             cterm=NONE             ctermbg=bg    ctermfg=231
 hi SpecialKey             cterm=NONE             ctermbg=bg    ctermfg=59
 hi SpellBad               cterm=undercurl        ctermbg=bg    ctermfg=196
 hi SpellCap               cterm=undercurl        ctermbg=bg    ctermfg=21
