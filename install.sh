@@ -52,6 +52,6 @@ done
 ###### Installs oh-my-zsh
 
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+    curl -L http://install.ohmyz.sh | sh
 fi
 
