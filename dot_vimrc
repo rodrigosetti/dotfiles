@@ -14,26 +14,27 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Recommended to install
-" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
 
 " My Bundles here:
-" Original repos on github
+" Core stuff
 NeoBundle 'junegunn/vim-easy-align' ":EasyAlign command
-NeoBundle 'mustache/vim-mustache-handlebars' "Mustache syntax
 NeoBundle 'scrooloose/syntastic' "Syntax checking hacks for vim
-NeoBundle 'tpope/vim-markdown' "Markdown syntax highlighting
 NeoBundle 'tpope/vim-surround' "Surround commands
 NeoBundle 'terryma/vim-multiple-cursors' "Multiple cursors (a-la Sublime)
 NeoBundle 'embear/vim-localvimrc' " Local .lvimrc files
 NeoBundle 'editorconfig/editorconfig-vim' " .editorconfig support
 NeoBundle 'bling/vim-airline' "lean & mean status/tabline for vim that's light as air
 NeoBundle 'tpope/vim-repeat' "enable repeating supported plugin maps with .
-NeoBundle 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
 NeoBundle 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
 NeoBundle 'bogado/file-line' "vim index.html:20
 NeoBundle 'airblade/vim-gitgutter' " A git gutter
+
+" Syntax and modes
+NeoBundle 'tpope/vim-markdown' "Markdown syntax highlighting
+NeoBundle 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
 NeoBundle 'ekalinin/Dockerfile.vim' "Dockerfile syntax
+NeoBundle 'mustache/vim-mustache-handlebars' "Mustache syntax
 
 call neobundle#end()
 
