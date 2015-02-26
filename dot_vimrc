@@ -4,42 +4,34 @@ set shell=bash "Set Vim's shell
 
 if has('vim_starting')
     set nocompatible               " Be improved
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-" Bundles installation
-call neobundle#begin(expand('~/.vim/bundle/'))
+" Plugins installation
+call plug#begin('~/.vim/plugged')
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'junegunn/vim-easy-align' ":EasyAlign command
+Plug 'mustache/vim-mustache-handlebars' "Mustache syntax
+Plug 'scrooloose/syntastic' "Syntax checking hacks for vim
+Plug 'tpope/vim-markdown' "Markdown syntax highlighting
+Plug 'tpope/vim-surround' "Surround commands
+Plug 'terryma/vim-multiple-cursors' "Multiple cursors (a-la Sublime)
+Plug 'embear/vim-localvimrc' " Local .lvimrc files
+Plug 'editorconfig/editorconfig-vim' " .editorconfig support
+Plug 'bling/vim-airline' "lean & mean status/tabline for vim that's light as air
+Plug 'tpope/vim-repeat' "enable repeating supported plugin maps with .
+Plug 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
+Plug 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
+Plug 'bogado/file-line' "vim index.html:20
+Plug 'airblade/vim-gitgutter' " A git gutter
+Plug 'ekalinin/Dockerfile.vim' "Dockerfile syntax
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' } " smart auto-complete
+Plug 'Raimondi/delimitMate' "matching delimiters
+Plug 'HTML-AutoCloseTag' " auto close HTML tags
 
-" Recommended to install
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
-
-" My Bundles here:
-" Core stuff
-NeoBundle 'junegunn/vim-easy-align' ":EasyAlign command
-NeoBundle 'scrooloose/syntastic' "Syntax checking hacks for vim
-NeoBundle 'tpope/vim-surround' "Surround commands
-NeoBundle 'terryma/vim-multiple-cursors' "Multiple cursors (a-la Sublime)
-NeoBundle 'embear/vim-localvimrc' " Local .lvimrc files
-NeoBundle 'editorconfig/editorconfig-vim' " .editorconfig support
-NeoBundle 'bling/vim-airline' "lean & mean status/tabline for vim that's light as air
-NeoBundle 'tpope/vim-repeat' "enable repeating supported plugin maps with .
-NeoBundle 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
-NeoBundle 'bogado/file-line' "vim index.html:20
-NeoBundle 'airblade/vim-gitgutter' " A git gutter
-
-" Syntax and modes
-NeoBundle 'tpope/vim-markdown' "Markdown syntax highlighting
-NeoBundle 'eagletmt/ghcmod-vim' "Haskell programming on Vim, powered by ghc-mod
-NeoBundle 'ekalinin/Dockerfile.vim' "Dockerfile syntax
-NeoBundle 'mustache/vim-mustache-handlebars' "Mustache syntax
-
-call neobundle#end()
+call plug#end()
 
 filetype plugin indent on " Required!
-NeoBundleCheck
 
 " ##################################################################
 " Plugins Customizations
