@@ -1,0 +1,45 @@
+; make big
+(set-frame-size (selected-frame) 200 55)
+
+(require 'package)
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
+(package-initialize)
+
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
+
+;; Set some modes that I like
+(add-hook 'after-init-hook #'evil-mode)
+(add-hook 'after-init-hook #'global-evil-surround-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'after-init-hook #'global-linum-mode)
+(add-hook 'after-init-hook #'global-git-gutter-mode)
+(add-hook 'after-init-hook #'auto-complete-mode)
+
+; Load dark theme
+(load-theme 'tango-dark t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
+ '(initial-buffer-choice t)
+ '(initial-scratch-message nil)
+ '(scroll-bar-mode nil)
+ '(server-mode t)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
