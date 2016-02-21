@@ -25,9 +25,8 @@ Plug 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
 Plug 'bogado/file-line' "vim index.html:20
 Plug 'airblade/vim-gitgutter' " A git gutter
 Plug 'ekalinin/Dockerfile.vim' "Dockerfile syntax
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' } " smart auto-complete
-Plug 'Raimondi/delimitMate' "matching delimiters
 Plug 'HTML-AutoCloseTag' " auto close HTML tags
+Plug 'derekwyatt/vim-scala' " Scala support
 
 call plug#end()
 
