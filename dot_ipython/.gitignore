@@ -1,0 +1,9 @@
+*
+!.gitignore
+!profile_default
+!__init__.py
+!ipythonrc-math
+!ipythonrc-numeric
+!ipythonrc-physics
+!ipythonrc-pysh
+!ipythonrc-tutorial
