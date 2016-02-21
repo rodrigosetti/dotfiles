@@ -2,7 +2,7 @@ export LANGUAGE=en
 export LC_ALL=en_US.UTF-8
 export LC_ALL=$LANG
 export TZ="/usr/share/zoneinfo/America/Los_Angeles"
-export EDITOR=vim
+export EDITOR='exec emacsclient --alternate-editor="" "$@"'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
