@@ -258,7 +258,28 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  )
+
+  (defmacro disallow-cd-in-function (fun)
+    "Prevent FUN (or any function that FUN calls) from changing directory."
+    `(defadvice ,fun (around dissallow-cd activate)
+       (let ((old-dir default-directory) ; Save old directory
+             (new-buf ad-do-it)) ; Capture new buffer
+         ;; If FUN returns a buffer, operate in that buffer in addition
+         ;; to current one.
+         (when (bufferp new-buf)
+           (set-buffer new-buf)
+           (setq default-directory old-dir))
+         ;; Set default-directory in the current buffer
+         (setq default-directory old-dir))))
+
+  (disallow-cd-in-function find-file-noselect-1)
+
+  ;; disable semantic highlighting for scala mode
+  (setq ensime-sem-high-faces
+        '(ensime-sem-high-enabled-p nil))
+
+  ;; enable racket unicode input method minor mode
+  (add-hook 'racket-mode-hook #'racket-unicode-input-method-enable))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
