@@ -28,7 +28,7 @@ values."
 
      ; Tools
      (shell :variables
-             shell-default-shell 'eshell
+             shell-default-shell 'ansi-term
              shell-default-term-shell "/bin/bash")
      (version-control :variables
                        version-control-global-margin t)
