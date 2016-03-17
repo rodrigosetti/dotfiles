@@ -21,7 +21,8 @@ values."
      ; Editing
      auto-completion
      spell-checking
-     syntax-checking
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default t)
      evil-cleverparens
 
 
