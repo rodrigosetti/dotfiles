@@ -27,6 +27,7 @@ Plug 'airblade/vim-gitgutter' " A git gutter
 Plug 'ekalinin/Dockerfile.vim' "Dockerfile syntax
 Plug 'HTML-AutoCloseTag' " auto close HTML tags
 Plug 'derekwyatt/vim-scala' " Scala support
+Plug 'wlangstroth/vim-racket' " Racket support
 
 call plug#end()
 
