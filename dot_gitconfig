@@ -20,8 +20,8 @@
   untracked = cyan
 
 [user]
-    name  = Rodrigo Setti
-    email = rodrigosetti@gmail.com
+    name  = Thiago Genez
+    email = thiagogenez@gmail.com
 
 [gc]
     auto = 1
