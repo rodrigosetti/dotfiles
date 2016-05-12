@@ -146,11 +146,3 @@ if [ -n "$PS1" ]; then
         . ~/git-completion.bash
     fi
 fi
-
-if [ -f ~/.bashrc_local ]; then
-    source ~/.bashrc_local
-fi
-
-if [ -f ~/.profile ]; then
-    source ~/.profile
-fi
