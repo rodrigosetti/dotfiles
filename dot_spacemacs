@@ -25,6 +25,7 @@ values."
                       syntax-checking-enable-by-default t)
      evil-cleverparens
 
+     org
 
      ; Tools
      (shell :variables
@@ -52,8 +53,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(protobuf-mode
-                                      cmake-mode
+   dotspacemacs-additional-packages '(protobuf-mode ; protobuf major mode
+                                      cmake-mode ; cmake major mode
+                                      ob-restclient ; restclient for org mode
                                       git-commit)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -259,6 +261,27 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
+  (setq org-capture-templates
+        '(("t" "TODO" entry
+           (file+headline
+            (expand-file-name "TODO.org" org-directory)
+            "Todos")
+           "* TODO  %?\n		%T\n %i\n")
+          ("i" "Idea" entry
+           (file+headline
+            (expand-file-name "IDEAS.org" org-directory)
+            "Ideas")
+           "* %?\n %i\n")))
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (haskell . t)
+     (js . t)
+     (ditaa . t)
+     (restclient . t)
+     (emacs-lisp . t)))
+
   (defmacro disallow-cd-in-function (fun)
     "Prevent FUN (or any function that FUN calls) from changing directory."
     `(defadvice ,fun (around dissallow-cd activate)
@@ -283,3 +306,10 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/org/NOTES.org" "~/org/TODO.org")))
+ '(org-default-notes-file "~/org/NOTES.org"))
