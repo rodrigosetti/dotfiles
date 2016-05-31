@@ -56,6 +56,8 @@ values."
    dotspacemacs-additional-packages '(protobuf-mode ; protobuf major mode
                                       cmake-mode ; cmake major mode
                                       ob-restclient ; restclient for org mode
+                                      ox-twbs ; Twitter bootstrap export for org mode
+                                      puml-mode ; UML diagrams
                                       git-commit)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -279,8 +281,22 @@ layers configuration. You are free to put any user code."
      (haskell . t)
      (js . t)
      (ditaa . t)
+     (calc . t)
      (restclient . t)
+     (plantuml . t)
      (emacs-lisp . t)))
+
+  (defun my-org-confirm-babel-evaluate (lang body)
+    "Don't ask for confirmation to evaluate some safe source blocks"
+    (cond ((string= lang "ditaa"      ) nil )
+          ((string= lang "plantuml"   ) nil )
+          ((string= lang "calc"       ) nil )
+          ((string= lang "emacs-lisp" ) nil )
+          (t t)))
+
+  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+
+  (setq org-plantuml-jar-path "~/plantuml.jar")
 
   (defmacro disallow-cd-in-function (fun)
     "Prevent FUN (or any function that FUN calls) from changing directory."
