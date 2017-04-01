@@ -29,6 +29,7 @@
 [alias]
     status = !git branch && git status
     plog   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    slog   = log --pretty=oneline --abbrev-commit
     grep   = grep -n --color=always -E
     last24 = log --author=rsetti --since=yesterday --pretty=oneline --abbrev-commit
 
