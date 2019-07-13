@@ -25,7 +25,6 @@ Plug 'ConradIrwin/vim-bracketed-paste' " Auto :set paste
 Plug 'bogado/file-line' "vim index.html:20
 Plug 'airblade/vim-gitgutter' " A git gutter
 Plug 'ekalinin/Dockerfile.vim' "Dockerfile syntax
-Plug 'HTML-AutoCloseTag' " auto close HTML tags
 Plug 'derekwyatt/vim-scala' " Scala support
 Plug 'wlangstroth/vim-racket' " Racket support
 
@@ -186,63 +185,6 @@ if has("wildignore")
     set wildignore+=*.o,*.obj,*.pyc,*.orig,*.swp,.git,*.toc,*.aux,*.out,*.snm,*.nav
 endif
 
-if has("windows") && v:version >= 700
-  function MyTabLine()
-    let s = ''
-    for i in range(tabpagenr('$'))
-      " select the highlighting
-      if i + 1 == tabpagenr()
-        let s .= '%#TabLineSel#'
-      else
-        let s .= '%#TabLine#'
-      endif
-
-      " set the tab page number (for mouse clicks)
-      let s .= '%' . (i + 1) . 'T'
-
-      " the label is made by MyTabLabel()
-      let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-    endfor
-
-    " after the last tab fill with TabLineFill and reset tab page nr
-    let s .= '%#TabLineFill#%T'
-
-    " right-align the label to close the current tab page
-    "if tabpagenr('$') > 1 let s .= '%=%#TabLine#%999Xclose' endif
-
-    return s
-  endfunction
-
-  function MyTabLabel(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    let s = substitute((bufname(buflist[winnr - 1])), '.*/', '', '')
-    if (empty(s))
-      let s = '[No Name]'
-    endif
-    let s = s . ' ['. bufnr(buflist[winnr-1]) .']'
-    return(s)
-  endfunction
-
-  set tabline=%!MyTabLine()
-
-  function TabMoveFW()
-    if (tabpagenr() == tabpagenr('$'))
-      :execute "tabmove 0"
-    else
-      :execute "tabmove ". tabpagenr()
-    endif
-  endfunction
-
-  function TabMoveRW()
-    if (tabpagenr() < 2)
-      :execute "tabmove"
-    else
-      :execute "tabmove ". (tabpagenr()-2)
-    endif
-  endfunction
-endif
-
 if has("printer")
   set printoptions=paper:A4,syntax:y,number:n,wrap:y
   set printfont=Bitstream\ Vera\ Sans\ Mono\ 14
@@ -262,8 +204,6 @@ function! StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-
-command StripRight silent! :call StripTrailingWhitespaces()
 
 " Can't make C-^ world
 noremap <C-k> <C-^>
