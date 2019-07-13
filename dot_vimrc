@@ -37,7 +37,7 @@ filetype plugin indent on " Required!
 " ##################################################################
 
 " git gutter
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 
 " Airline: customization
 if !exists('g:airline_symbols')
