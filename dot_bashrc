@@ -146,3 +146,6 @@ if [ -n "$PS1" ]; then
         . ~/git-completion.bash
     fi
 fi
+
+# direnv.net
+eval "$(direnv hook bash)"
