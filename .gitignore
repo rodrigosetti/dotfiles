@@ -2,10 +2,9 @@
 .ssh
 config/fish/fish_history
 config/fish/fishd.*
+config/nvim/plugin/
 dot_ipython/IPython_crash_report.txt
 dot_ipython/db
 dot_ipython/history
 dot_ipython/profile_default/history.sqlite
 dot_ssh
-dot_vim/.netrwhist
-dot_vim/bundle/*

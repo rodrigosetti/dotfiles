@@ -28,6 +28,8 @@ COLOR_CYAN='\033[0;36m'
 COLOR_LIGHTCYAN='\033[1;36m'
 COLOR_DEFAULT='\033[0m'
 
+alias vim=nvim
+
 # Function to set prompt_command to.
 function promptcmd () {
     history -a
